@@ -10,7 +10,7 @@ import { Component } from '@angular/core'
         </nav>
     </header>`,
     styles: [`
-    .app-bar {
+.app-bar {
     height: 65px;
     padding: 5px 30px;
     background-color: #00BCD4;
