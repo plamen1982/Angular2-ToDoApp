@@ -1,6 +1,8 @@
 import {
     Component,
-    Input
+    Input,
+    Output,
+    EventEmitter
 } from '@angular/core'
 
 @Component({
@@ -11,7 +13,7 @@ import {
 (mouseleave) ="toggleVisiable()"
 (mouseenter) = "toggleVisiable()"
 >
-    <div class="icon" *ngIf = "checkVisiable">
+    <div class="icon" (click)="onChecked()" *ngIf = "checkVisiable">
         <i class="material-icons value">check</i>
     </div>
     <div class="col-xs-12 title">
@@ -63,13 +65,16 @@ export class NoteCard {
         value:''
     }
 
+    @Output() checked = new EventEmitter()
+
     checkVisiable : boolean = false
+
 
     toggleVisiable () {
         this.checkVisiable = !this.checkVisiable
     }
 
-    onChecked = () => {
-        console.log("Check!")
+    onChecked() {
+        this.checked.next(this.notedata)
     }
 }

@@ -12,7 +12,9 @@ import { Component } from '@angular/core'
             <note-card
             class="col-xs-4"
             [notedata]="note"
-            *ngFor = "let note of notes">
+            *ngFor = "let note of notes; let i = index"
+            (checked) = "removeCard(i)"
+            >
             </note-card>
         </div>
     </div>
@@ -31,7 +33,12 @@ import { Component } from '@angular/core'
 
 export class NoteContainer {
       notes =
-            [{ title:"Hello", value:"Eat food", color:"lightblue"},
+            [
+                { title:"Hello", value:"Eat food", color:"lightblue"},
             { title:"Dog", value:"Go for walk", color:"red"},
-            { title:"Sleep", value:"Go to bed", color:"green"}]
+            { title:"Sleep", value:"Go to bed", color:"green"},
+            ]
+    removeCard(i) {
+        this.notes.splice(i, 1)
+    }
 }
