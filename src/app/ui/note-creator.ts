@@ -5,6 +5,7 @@ import {
     EventEmitter
 } from '@angular/core'
 
+
 @Component({
     selector:'note-creator',
     template:`
@@ -19,6 +20,8 @@ import {
             name = "newNoteTitle"
             placeholder="Title"
             class = "col-xs-10 title inputNote full"
+            (focus) = "showForm()"
+            required
           >
           <input
           type = "text"
@@ -26,11 +29,19 @@ import {
           name = "newNoteValue"
           placeholder="Take a note..."
           class = "col-xs-10 value inputNote full"
+          *ngIf = "isFocused"
+          required
           >
+
+            <color-picker [(newNote)] = "newNote">
+
+          </color-picker>
+
           <div class = "actions col-xs-12 row between-xs">
                 <button
                 type="submit"
                 class="btn-light inputNote"
+                *ngIf = "isFocused"
                 >
                 Done
                 </button>
@@ -63,20 +74,30 @@ import {
 
 
 export class NoteCreator {
+
     @Input() newNote = {
         title:'',
-        value:''
+        value:'',
+        color:''
+    }
+
+    isFocused = false;
+
+    showForm () {
+        this.isFocused =  !this.isFocused
     }
     @Output() createNote = new EventEmitter()
 
     createNewNote(){
-        const {title, value} = this.newNote;
+
+        const {title, value, color} = this.newNote;
 
         if(title&&value) {
-            this.createNote.next({title, value})
+            this.createNote.next({title, value, color})
         }
         this.newNote.title = ''
         this.newNote.value = ''
-    }
+        this.newNote.color = ''
 
+    }
 }
