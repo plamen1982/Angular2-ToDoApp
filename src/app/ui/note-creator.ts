@@ -12,6 +12,8 @@ import {
     <div class="note-creator shadow-2">
         <form class="row"
         (submit)="createNewNote()"
+        (mouseenter) = "showForm()"
+        (mouseleave) = "showForm()"
         >
 
         <input
@@ -20,7 +22,6 @@ import {
             name = "newNoteTitle"
             placeholder="Title"
             class = "col-xs-10 title inputNote full"
-            (focus) = "showForm()"
             required
           >
           <input
@@ -84,7 +85,10 @@ export class NoteCreator {
     isFocused = false;
 
     showForm () {
-        this.isFocused =  !this.isFocused
+        if(!this.newNote.title&&!this.newNote.value){
+            this.isFocused =  !this.isFocused
+        }
+
     }
     @Output() createNote = new EventEmitter()
 

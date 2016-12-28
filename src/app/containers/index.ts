@@ -1,4 +1,4 @@
-import { Main } from './main'
-import { NoteContainer } from './notes'
+export { Main } from './main'
+export { NotesContainer } from './notes'
+export { About } from './about'
 
-export { Main, NoteContainer }

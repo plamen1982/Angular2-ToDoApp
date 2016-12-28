@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "webpack --config webpack.spec.ts --progress --color && karma start",
-    "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3100  --content-base src",
+    "start": "webpack-dev-server --inline --colors --progress --display-error-details --port 3200  --content-base src",
     "api": "angularclass-server --api retain --port 3500"
   },
   "author": "",
@@ -14,7 +14,7 @@
     "@angular/common": "^2.0.0",
     "@angular/compiler": "^2.0.0",
     "@angular/core": "^2.0.0",
-    "@angular/forms": "^2.2.1",
+    "@angular/forms": "^2.0.0",
     "@angular/http": "^2.0.0",
     "@angular/platform-browser": "^2.0.0",
     "@angular/platform-browser-dynamic": "^2.0.0",
@@ -40,7 +40,7 @@
     "to-string-loader": "^1.1.4",
     "ts-helpers": "^1.1.1",
     "typescript": "2.0.10",
-    "webpack": "1.14.0",
-    "webpack-dev-server": "1.16.2"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }

@@ -1,3 +1,10 @@
-import { App } from './app'
+import  * as services from './services'
 
-export { App }
+const  mapValuesToArray =
+    (obj) => Object.keys(obj).map(key => obj[key])
+
+export { App } from './app'
+export { routes } from './routes'
+export const providers = [
+    ...mapValuesToArray(services)
+]

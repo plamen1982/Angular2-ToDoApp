@@ -13,7 +13,7 @@ import {
 (mouseleave) ="toggleVisiable()"
 (mouseenter) = "toggleVisiable()"
 >
-    <div class="icon" (click)="onChecked()" *ngIf = "checkVisiable">
+    <div class="icon" *ngIf = "checkVisible" (click)="removeCard()">
         <i class="material-icons value">check</i>
     </div>
     <div class="col-xs-12 title">
@@ -58,23 +58,25 @@ import {
     `]
 })
 
+// public fields are binded
 export class NoteCard {
 
     @Input() notedata = {
-        title:'',
-        value:''
+        title: '',
+        value: '',
     }
 
-    @Output() checked = new EventEmitter()
+    checkVisible: boolean = false;
 
-    checkVisiable : boolean = false
+    @Output() cardRemoved = new EventEmitter();
 
-
-    toggleVisiable () {
-        this.checkVisiable = !this.checkVisiable
+    toggleVisiable() {
+        this.checkVisible = !this.checkVisible;
     }
 
-    onChecked() {
-        this.checked.next(this.notedata)
+    removeCard() {
+        this.cardRemoved.next(); // come on work
+        console.log('Should be removed!')
     }
+
 }
