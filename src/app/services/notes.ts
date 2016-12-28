@@ -6,20 +6,23 @@ import { Observable } from 'rxjs/Observable'
 export class NotesService {
     private path: string = '/notes'
 
-    constructor(private baseApi: Api) {
+    constructor(private api: Api){
 
     }
 
     getNotes() : Observable<any> {
-        return this.baseApi.get(this.path)
+        return this.api
+            .get(this.path)
     }
 
     createNote(note) : Observable<any> {
-        return this.baseApi.post(this.path, note)
+        return this.api
+            .post(this.path, note)
     }
 
     completeNote(note) : Observable<any> {
         let completePath = `${this.path}/${note.id}`
-        return this.baseApi.delete(completePath)
+        return this.api.delete(completePath)
     }
+
 }
